@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-lg-12">
+        div class="col-lg-12">
             <h2>Rate this movie</h2>
             <form action="/movie/rate" method="post">
                 <input type="hidden" name="movie_id" value="<?= htmlspecialchars($data['movie']['imdbID']) ?>">
@@ -40,15 +40,25 @@
 
                 <fieldset class="form-group">
                     <legend class="col-form-label pt-0">Rating (out of 5)</legend>
-                    <div class="form-group">
-                        <input type="range" class="form-range" min="1" max="5" step="1" id="rating" name="rating" required>
-                        <div class="d-flex justify-content-between">
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating1" value="1" required>
+                        <label class="form-check-label" for="rating1">1</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating2" value="2">
+                        <label class="form-check-label" for="rating2">2</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating3" value="3">
+                        <label class="form-check-label" for="rating3">3</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating4" value="4">
+                        <label class="form-check-label" for="rating4">4</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating5" value="5">
+                        <label class="form-check-label" for="rating5">5</label>
                     </div>
                 </fieldset>
                 <button type="submit" class="btn btn-primary mt-3">Submit Rating</button>
