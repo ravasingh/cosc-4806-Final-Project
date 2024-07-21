@@ -17,7 +17,7 @@ class Movie extends Controller {
                             header('Location: /movie');
                         }
                     }
-
+//rating function
     public function rate(): void {
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $movie_id = $_POST['movie_id'];
