@@ -37,7 +37,7 @@ class Api {
         $stmt->execute();
         $existing_movie = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
+//if the movie doesnt exist in the database, add it
         if (!$existing_movie) {
             $stmt = $this->db->prepare("
                 INSERT INTO movies 
