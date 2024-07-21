@@ -37,7 +37,7 @@ class Api {
         $stmt->execute();
         $existing_movie = $stmt->fetch(PDO::FETCH_ASSOC);
 
-//if the movie doesnt exist in the database, add it into the database
+
         if (!$existing_movie) {
             $stmt = $this->db->prepare("
                 INSERT INTO movies 
@@ -69,4 +69,27 @@ class Api {
 
     }
 
-}
+
+
+    public function save_rating($movie_id, $rating): void {
+
+        $stmt = $this->db->prepare("SELECT * FROM movies WHERE imdb_id = :imdb_id");
+            $stmt->bindValue(':imdb_id', $movie_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result && isset($result['id'])) {
+                $id = $result['id'];
+
+
+                $stmt = $this->db->prepare("INSERT INTO ratings (movie_id, rating) VALUES (:movie_id, :rating)");
+                $stmt->bindValue(':movie_id',  $id );
+                $stmt->bindValue(':rating', $rating);
+                $stmt->execute();
+            } else {
+
+                throw new Exception("Movie with ID $movie_id not found.");
+            }
+        }
+    }
+

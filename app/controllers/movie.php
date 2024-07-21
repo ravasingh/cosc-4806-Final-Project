@@ -33,7 +33,7 @@ class Movie extends Controller {
                             exit();
                         }
                     }
-
+//reviewing function
     public function review(): void {
 
           if (isset($_SESSION['rating']) && isset($_SESSION['movie_title'])) {
