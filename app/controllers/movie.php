@@ -4,7 +4,7 @@ class Movie extends Controller {
     public function index(): void {
                         $this->view('movie/index');
                     }
-
+//search function
     public function search(): void {
 
                         if (isset($_REQUEST['movie'])) {
